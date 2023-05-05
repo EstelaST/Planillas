@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Planillas.TRASLADO>
+
+@{
+    ViewBag.Title = "TRASLADO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TRASLADO</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO_EMPLEADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO_AREA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_TRASLADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_TRASLADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO_CREA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_CREA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO_ACTUALIZA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_ACTUALIZA)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODIGO_EMPLEADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODIGO_AREA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ESTADO_TRASLADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_TRASLADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIO_CREA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_CREA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIO_ACTUALIZA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_ACTUALIZA)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_TRASLADOS }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_TRASLADOS }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_TRASLADOS })
+                </td>
+            </tr>
+        }
+    }
+    </table>

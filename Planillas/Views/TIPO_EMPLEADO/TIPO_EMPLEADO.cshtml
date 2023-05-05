@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Planillas.TIPO_EMPLEADO>
+
+@{
+    ViewBag.Title = "TIPO_EMPLEADO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TIPO_EMPLEADO</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_TIPO_EMPLEADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUELDO)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE_TIPO_EMPLEADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUELDO)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_TIPO_EMPLEADO }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_TIPO_EMPLEADO }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_TIPO_EMPLEADO })
+                </td>
+            </tr>
+        }
+    }
+
+    </table>

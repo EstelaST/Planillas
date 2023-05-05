@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PLANILLAS" Class="DBPlanillasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-QD61HMF;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DEPARTAMENTO" Member="DEPARTAMENTO">
+    <Type Name="DEPARTAMENTO">
+      <Column Name="CODIGO_DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_DEPARTAMENTO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PAIS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DEPARTAMENTO_MUNICIPIO" Member="MUNICIPIO" ThisKey="CODIGO_DEPARTAMENTO" OtherKey="DEPARTAMENTO" Type="MUNICIPIO" />
+      <Association Name="DEPARTAMENTO_EMPLEADO" Member="EMPLEADO" ThisKey="CODIGO_DEPARTAMENTO" OtherKey="DEPARTAMENTO" Type="EMPLEADO" />
+      <Association Name="PAIS_DEPARTAMENTO" Member="PAIS1" ThisKey="PAIS" OtherKey="CODIGO_PAIS" Type="PAIS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MUNICIPIO" Member="MUNICIPIO">
+    <Type Name="MUNICIPIO">
+      <Column Name="CODIGO_MUNICIPIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_MINICIPIO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PAIS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MUNICIPIO_EMPLEADO" Member="EMPLEADO" ThisKey="CODIGO_MUNICIPIO" OtherKey="MUNICIPIO" Type="EMPLEADO" />
+      <Association Name="DEPARTAMENTO_MUNICIPIO" Member="DEPARTAMENTO1" ThisKey="DEPARTAMENTO" OtherKey="CODIGO_DEPARTAMENTO" Type="DEPARTAMENTO" IsForeignKey="true" />
+      <Association Name="PAIS_MUNICIPIO" Member="PAIS1" ThisKey="PAIS" OtherKey="CODIGO_PAIS" Type="PAIS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PAIS" Member="PAIS">
+    <Type Name="PAIS">
+      <Column Name="CODIGO_PAIS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_PAIS" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="PAIS_DEPARTAMENTO" Member="DEPARTAMENTO" ThisKey="CODIGO_PAIS" OtherKey="PAIS" Type="DEPARTAMENTO" />
+      <Association Name="PAIS_MUNICIPIO" Member="MUNICIPIO" ThisKey="CODIGO_PAIS" OtherKey="PAIS" Type="MUNICIPIO" />
+      <Association Name="PAIS_EMPLEADO" Member="EMPLEADO" ThisKey="CODIGO_PAIS" OtherKey="PAIS" Type="EMPLEADO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIPO_EMPLEADO" Member="TIPO_EMPLEADO">
+    <Type Name="TIPO_EMPLEADO">
+      <Column Name="CODIGO_TIPO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SUELDO" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Association Name="TIPO_EMPLEADO_EMPLEADO" Member="EMPLEADO" ThisKey="CODIGO_TIPO_EMPLEADO" OtherKey="TIPO_EMPLEADO" Type="EMPLEADO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AREA" Member="AREA">
+    <Type Name="AREA">
+      <Column Name="CODIGO_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="AREA_TRASLADO" Member="TRASLADO" ThisKey="CODIGO_AREA" OtherKey="CODIGO_AREA" Type="TRASLADO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRASLADO" Member="TRASLADO">
+    <Type Name="TRASLADO">
+      <Column Name="CODIGO_TRASLADOS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO_TRASLADO" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_TRASLADO" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AREA_TRASLADO" Member="AREA" ThisKey="CODIGO_AREA" OtherKey="CODIGO_AREA" Type="AREA" IsForeignKey="true" />
+      <Association Name="EMPLEADO_TRASLADO" Member="EMPLEADO" ThisKey="CODIGO_TRASLADOS" OtherKey="CODIGO_EMPLEADO" Type="EMPLEADO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMPLEADO" Member="EMPLEADO">
+    <Type Name="EMPLEADO">
+      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PRIMER_NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SEGUNDO_NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIMER_APELLIDO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SEGUNDO_APELLIDO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="SEXO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PAIS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MUNICIPIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DIRECCION" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ESTADO_CIVIL" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="TELEFONO" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CORREO_ELECTRONICO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LUGAR_NACIMIENTO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DUI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NIT" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AFP" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="SEGURO" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NUP" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TIPO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_INGRESO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_RETIRO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_CREA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ACTIVO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="EMPLEADO_TRASLADO" Member="TRASLADO" ThisKey="CODIGO_EMPLEADO" OtherKey="CODIGO_TRASLADOS" Type="TRASLADO" Cardinality="One" />
+      <Association Name="DEPARTAMENTO_EMPLEADO" Member="DEPARTAMENTO1" ThisKey="DEPARTAMENTO" OtherKey="CODIGO_DEPARTAMENTO" Type="DEPARTAMENTO" IsForeignKey="true" />
+      <Association Name="MUNICIPIO_EMPLEADO" Member="MUNICIPIO1" ThisKey="MUNICIPIO" OtherKey="CODIGO_MUNICIPIO" Type="MUNICIPIO" IsForeignKey="true" />
+      <Association Name="PAIS_EMPLEADO" Member="PAIS1" ThisKey="PAIS" OtherKey="CODIGO_PAIS" Type="PAIS" IsForeignKey="true" />
+      <Association Name="TIPO_EMPLEADO_EMPLEADO" Member="TIPO_EMPLEADO1" ThisKey="TIPO_EMPLEADO" OtherKey="CODIGO_TIPO_EMPLEADO" Type="TIPO_EMPLEADO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_MTTO_AREAS" Method="SP_MTTO_AREAS">
+    <Parameter Name="CODIGO_AREA" Parameter="cODIGO_AREA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_AREA" Parameter="nOMBRE_AREA" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
