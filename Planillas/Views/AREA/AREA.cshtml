@@ -5,18 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AREA</h2>
+<h2>Áreas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
 </p>
 <table class="table">
     <tr>
-        <th scope="col">
-            @Html.DisplayNameFor(model => model.NOMBRE_AREA)
+        <th>
+            Nombre
         </th>
         <th></th>
     </tr>
+
     @if (Model != null)
     {
         foreach (var item in Model)
@@ -26,12 +27,12 @@
                     @Html.DisplayFor(modelItem => item.NOMBRE_AREA)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_AREA }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_AREA }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_AREA })
+
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_AREA })</button>
+                    <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_AREA })</button>
+                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_AREA })</button>
                 </td>
             </tr>
         }
     }
-    
-</table>
+    </table>

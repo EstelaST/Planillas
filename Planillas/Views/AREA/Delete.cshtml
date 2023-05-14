@@ -1,0 +1,34 @@
+﻿@model Planillas.AREA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h4>¿Estas seguro de eliminar esta área?</h4>
+<div>
+    <h4>Área</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_AREA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete","AREA", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger"/>
+            <button type="button" class="btn btn-secondary">@Html.ActionLink("Regresar", "AREA")</button>
+
+        </div>
+    }
+</div>

@@ -1,0 +1,235 @@
+﻿@model Planillas.EMPLEADO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EMPLEADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIMER_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRIMER_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEGUNDO_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIMER_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRIMER_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEGUNDO_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_NACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAIS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEPARTAMENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPARTAMENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MUNICIPIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MUNICIPIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO_CIVIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO_CIVIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO_ELECTRONICO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LUGAR_NACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LUGAR_NACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DUI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DUI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NIT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NIT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGURO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEGURO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_EMPLEADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_EMPLEADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_INGRESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_RETIRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_RETIRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_CREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_CREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_ACTUALIZA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_ACTUALIZA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ACTUALIZA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ACTUALIZA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CODIGO_EMPLEADO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
