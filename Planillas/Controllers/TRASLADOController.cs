@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Planillas.Controllers
 {
-    public class TRASLADOController : Controller
+    public class TRASLADOController : ControlsController
     {
         // GET: TRASLADO
         public ActionResult TRASLADO()

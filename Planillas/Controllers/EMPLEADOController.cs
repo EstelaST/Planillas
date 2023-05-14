@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Planillas.Controllers
 {
-    public class EMPLEADOController : Controller
+    public class EMPLEADOController : ControlsController
     {
         // GET: EMPLEADO
         public ActionResult EMPLEADO()

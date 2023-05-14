@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Planillas.Controllers
 {
-    public class TIPO_EMPLEADOController : Controller
+    public class TIPO_EMPLEADOController : ControlsController
     {
         // GET: TIPO_EMPLEADO
         public ActionResult TIPO_EMPLEADO()
