@@ -11,13 +11,15 @@ namespace Planillas.Controllers
         // GET: TIPO_EMPLEADO
         public ActionResult TIPO_EMPLEADO()
         {
-            return View();
+            List<TIPO_EMPLEADO> Modelo = (from c in db.TIPO_EMPLEADO select c).ToList();
+            return View(Modelo);
         }
 
         // GET: TIPO_EMPLEADO/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var Modelo = (from c in db.TIPO_EMPLEADO where c.CODIGO_TIPO_EMPLEADO == id select c).Single();
+            return View(Modelo);
         }
 
         // GET: TIPO_EMPLEADO/Create
@@ -28,13 +30,13 @@ namespace Planillas.Controllers
 
         // POST: TIPO_EMPLEADO/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection, TIPO_EMPLEADO modelo)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                db.SP_MTTO_TIPO_EMPLEADO(modelo.CODIGO_TIPO_EMPLEADO, modelo.NOMBRE_TIPO_EMPLEADO, modelo.SUELDO, (int)opcion.Add);
+                return RedirectToAction("TIPO_EMPLEADO");
             }
             catch
             {
@@ -45,18 +47,19 @@ namespace Planillas.Controllers
         // GET: TIPO_EMPLEADO/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var Modelo = (from c in db.TIPO_EMPLEADO where c.CODIGO_TIPO_EMPLEADO == id select c).Single();
+            return View(Modelo);
         }
 
         // POST: TIPO_EMPLEADO/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(FormCollection collection, TIPO_EMPLEADO modelo)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                db.SP_MTTO_TIPO_EMPLEADO(modelo.CODIGO_TIPO_EMPLEADO, modelo.NOMBRE_TIPO_EMPLEADO, modelo.SUELDO, (int)opcion.Update);
+                return RedirectToAction("TIPO_EMPLEADO");
             }
             catch
             {
@@ -67,7 +70,8 @@ namespace Planillas.Controllers
         // GET: TIPO_EMPLEADO/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var Modelo = (from c in db.TIPO_EMPLEADO where c.CODIGO_TIPO_EMPLEADO == id select c).Single();
+            return View(Modelo);
         }
 
         // POST: TIPO_EMPLEADO/Delete/5
@@ -77,8 +81,8 @@ namespace Planillas.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                db.SP_MTTO_TIPO_EMPLEADO(id, "",0, (int)opcion.Delete);
+                return View();
             }
             catch
             {
