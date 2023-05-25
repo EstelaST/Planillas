@@ -145,6 +145,13 @@ namespace Planillas
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_AREA, nOMBRE_AREA, tIPO_MODIFICADOR);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_MTTO_TIPO_EMPLEADO")]
+		public int SP_MTTO_TIPO_EMPLEADO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_TIPO_EMPLEADO", DbType="Int")] System.Nullable<int> cODIGO_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOMBRE_TIPO_EMPLEADO", DbType="VarChar(30)")] string nOMBRE_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SUELDO", DbType="Decimal(12,2)")] System.Nullable<decimal> sUELDO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_MODIFICADOR", DbType="Int")] System.Nullable<int> tIPO_MODIFICADOR)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_TIPO_EMPLEADO, nOMBRE_TIPO_EMPLEADO, sUELDO, tIPO_MODIFICADOR);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DEPARTAMENTO")]

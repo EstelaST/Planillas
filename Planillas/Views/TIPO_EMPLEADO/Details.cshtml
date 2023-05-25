@@ -1,0 +1,35 @@
+﻿@model Planillas.TIPO_EMPLEADO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Tipo de Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_TIPO_EMPLEADO)
+        </dd>
+
+        <dt>
+            Suelto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUELDO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = Model.CODIGO_TIPO_EMPLEADO })</button> |
+    <button type="button" class="btn btn-secondary">@Html.ActionLink("Regresar", "TIPO_EMPLEADO")</button>
+</p>

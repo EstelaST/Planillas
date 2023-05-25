@@ -1,0 +1,41 @@
+﻿@model Planillas.TIPO_EMPLEADO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h4>¿Estas seguro de eliminar éste tipo de empleado?</h4>
+<div>
+    <h4>Tipo de Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_TIPO_EMPLEADO)
+        </dd>
+
+        <dt>
+            Sueldo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUELDO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "TIPO_EMPLEADO", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <button type="button" class="btn btn-secondary">@Html.ActionLink("Regresar", "TIPO_EMPLEADO")</button>
+        </div>
+    }
+</div>

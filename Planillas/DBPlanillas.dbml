@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PLANILLAS" Class="DBPlanillasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-QD61HMF;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-RJND44F;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.DEPARTAMENTO" Member="DEPARTAMENTO">
     <Type Name="DEPARTAMENTO">
       <Column Name="CODIGO_DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -100,6 +100,13 @@
   <Function Name="dbo.SP_MTTO_AREAS" Method="SP_MTTO_AREAS">
     <Parameter Name="CODIGO_AREA" Parameter="cODIGO_AREA" Type="System.Int32" DbType="Int" />
     <Parameter Name="NOMBRE_AREA" Parameter="nOMBRE_AREA" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MTTO_TIPO_EMPLEADO" Method="SP_MTTO_TIPO_EMPLEADO">
+    <Parameter Name="CODIGO_TIPO_EMPLEADO" Parameter="cODIGO_TIPO_EMPLEADO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_TIPO_EMPLEADO" Parameter="nOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="SUELDO" Parameter="sUELDO" Type="System.Decimal" DbType="Decimal(12,2)" />
     <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>

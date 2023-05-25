@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TIPO_EMPLEADO</h2>
+<h2>Tipo de Empleado</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NOMBRE_TIPO_EMPLEADO)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SUELDO)
+            Sueldo
         </th>
         <th></th>
     </tr>
@@ -33,12 +33,12 @@
                     @Html.DisplayFor(modelItem => item.SUELDO)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_TIPO_EMPLEADO }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_TIPO_EMPLEADO }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_TIPO_EMPLEADO })
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_TIPO_EMPLEADO })</button>
+                    <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_TIPO_EMPLEADO })</button>
+                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_TIPO_EMPLEADO })</button>
                 </td>
             </tr>
         }
     }
 
-    </table>
+</table>
