@@ -82,11 +82,12 @@ namespace Planillas.Controllers
             {
                 // TODO: Add delete logic here
                 db.SP_MTTO_TIPO_EMPLEADO(id, "",0, (int)opcion.Delete);
-                return View();
+                return RedirectToAction("TIPO_EMPLEADO", "TIPO_EMPLEADO");
+
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("TIPO_EMPLEADO", "TIPO_EMPLEADO");
             }
         }
     }

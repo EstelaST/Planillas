@@ -130,8 +130,10 @@
     <Compile Include="Controllers\ControlsController.cs" />
     <Compile Include="Controllers\EMPLEADOController.cs" />
     <Compile Include="Controllers\HOMEController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\TIPO_EMPLEADOController.cs" />
     <Compile Include="Controllers\TRASLADOController.cs" />
+    <Compile Include="Controllers\USUARIOController.cs" />
     <Compile Include="DBPlanillas.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -257,10 +259,8 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Content.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\INDEX.cshtml" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
@@ -286,11 +286,19 @@
     <Content Include="Views\AREA\Edit.cshtml" />
     <Content Include="Views\AREA\Delete.cshtml" />
     <Content Include="Views\AREA\Details.cshtml" />
+    <Content Include="Views\USUARIO\USUARIO.cshtml" />
+    <Content Include="Views\TRASLADO\Create.cshtml" />
+    <Content Include="Views\TRASLADO\Edit.cshtml" />
+    <Content Include="Views\TIPO_EMPLEADO\Create.cshtml" />
+    <Content Include="Views\TIPO_EMPLEADO\Delete.cshtml" />
+    <Content Include="Views\TIPO_EMPLEADO\Details.cshtml" />
+    <Content Include="Views\TIPO_EMPLEADO\Edit.cshtml" />
+    <Content Include="Views\TRASLADO\Details.cshtml" />
+    <Content Include="Views\TRASLADO\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Controls\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

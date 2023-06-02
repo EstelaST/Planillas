@@ -1,0 +1,97 @@
+﻿@model Planillas.V_TRASLADOS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Detalles</h2>
+
+<div>
+    <h4>Traslados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Código
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO_TRASLADOS)
+        </dd>
+        <dt>
+            Empleado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_EMPLEADO)
+        </dd>
+        <dt>
+            Origen
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_AREA_ORIGEN)
+        </dd>
+        <dt>
+            Destino
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_AREA_DESTINO)
+        </dd>
+        <dt>
+            Cargo Anterior
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_TIPO_EMPLEADO_ORIGEN)
+        </dd>
+        <dt>
+            Cargo Actual
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_TIPO_EMPLEADO_DESTINO)
+        </dd>
+        <dt>
+            Sueldo Anterior
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SUELDO_ANTERIOR)
+        </dd>
+        <dt>
+            Sueldo Actual
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SUELDO_ACTUAL)
+        </dd>
+        <dt>
+            Estado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO_TRASLADO)
+        </dd>
+        <dt>
+            Fecha Traslado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_TRASLADO)
+        </dd>
+        <dt>
+            Usuario Creación
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_CREA)
+        </dd>
+        <dt>
+            Fecha  Creación
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CREA)
+        </dd>
+        <dt>
+            Usuario  Actualiza
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_CREA)
+        </dd>
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = Model.CODIGO_TRASLADOS })</button>
+    <button type="button" class="btn btn-secondary">@Html.ActionLink("Regresar", "TRASLADO")</button>
+
+</p>

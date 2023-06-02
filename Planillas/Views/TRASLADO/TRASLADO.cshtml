@@ -1,79 +1,77 @@
-﻿@model IEnumerable<Planillas.TRASLADO>
+﻿@model IEnumerable<Planillas.V_TRASLADOS>
 
 @{
     ViewBag.Title = "TRASLADO";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TRASLADO</h2>
+<h2>Traslados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CODIGO_EMPLEADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CODIGO_AREA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ESTADO_TRASLADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHA_TRASLADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USUARIO_CREA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHA_CREA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USUARIO_ACTUALIZA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHA_ACTUALIZA)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Empleado
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Origen
+            </th>
+            <th>
+                Destino
+            </th>
+            <th>
+                Puesto
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Usuario Autoriza
+            </th>
+        </tr>
 
-    @if (Model != null)
-    {
-        foreach (var item in Model)
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CODIGO_EMPLEADO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CODIGO_AREA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ESTADO_TRASLADO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_TRASLADO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.USUARIO_CREA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_CREA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.USUARIO_ACTUALIZA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_ACTUALIZA)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_TRASLADOS }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_TRASLADOS }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_TRASLADOS })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO_TRASLADOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_EMPLEADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_TRASLADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_AREA_ORIGEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_AREA_DESTINO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_TIPO_EMPLEADO_DESTINO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_TRASLADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO_CREA)
+        </td>
+        <td>
+
+            <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_TRASLADOS })</button>
+            <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_TRASLADOS })</button>
+            <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_TRASLADOS })</button>
+        </td>
+    </tr>
         }
-    }
+
     </table>

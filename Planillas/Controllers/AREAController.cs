@@ -12,9 +12,14 @@ namespace Planillas.Controllers
 
         public ActionResult AREA()
         {
-            List<AREA> Modelo = (from c in db.AREA select c).ToList();
+            if (Session["Usuario"] != null)
+            {
+                List<AREA> Modelo = (from c in db.AREA select c).ToList();
+                return View(Modelo);
+            }else {
+                return RedirectToAction("USUARIO", "USUARIO");
+            }
 
-            return View(Modelo);
         }
 
         public ActionResult Create()

@@ -5,34 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Áreas</h2>
+    <h2>Áreas</h2>
 
-<p>
-    <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th></th>
+        </tr>
 
-    @if (Model != null)
-    {
-        foreach (var item in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NOMBRE_AREA)
-                </td>
-                <td>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_AREA)
+                    </td>
+                    <td>
 
-                    <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_AREA })</button>
-                    <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_AREA })</button>
-                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_AREA })</button>
-                </td>
-            </tr>
+                        <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_AREA })</button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_AREA })</button>
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_AREA })</button>
+                    </td>
+                </tr>
+            }
         }
-    }
-    </table>
+        </table>
+

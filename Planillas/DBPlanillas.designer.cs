@@ -42,15 +42,18 @@ namespace Planillas
     partial void InsertTIPO_EMPLEADO(TIPO_EMPLEADO instance);
     partial void UpdateTIPO_EMPLEADO(TIPO_EMPLEADO instance);
     partial void DeleteTIPO_EMPLEADO(TIPO_EMPLEADO instance);
+    partial void InsertEMPLEADO(EMPLEADO instance);
+    partial void UpdateEMPLEADO(EMPLEADO instance);
+    partial void DeleteEMPLEADO(EMPLEADO instance);
+    partial void InsertUSUARIO(USUARIO instance);
+    partial void UpdateUSUARIO(USUARIO instance);
+    partial void DeleteUSUARIO(USUARIO instance);
     partial void InsertAREA(AREA instance);
     partial void UpdateAREA(AREA instance);
     partial void DeleteAREA(AREA instance);
     partial void InsertTRASLADO(TRASLADO instance);
     partial void UpdateTRASLADO(TRASLADO instance);
     partial void DeleteTRASLADO(TRASLADO instance);
-    partial void InsertEMPLEADO(EMPLEADO instance);
-    partial void UpdateEMPLEADO(EMPLEADO instance);
-    partial void DeleteEMPLEADO(EMPLEADO instance);
     #endregion
 		
 		public DBPlanillasDataContext() : 
@@ -115,6 +118,22 @@ namespace Planillas
 			}
 		}
 		
+		public System.Data.Linq.Table<EMPLEADO> EMPLEADO
+		{
+			get
+			{
+				return this.GetTable<EMPLEADO>();
+			}
+		}
+		
+		public System.Data.Linq.Table<USUARIO> USUARIO
+		{
+			get
+			{
+				return this.GetTable<USUARIO>();
+			}
+		}
+		
 		public System.Data.Linq.Table<AREA> AREA
 		{
 			get
@@ -131,11 +150,11 @@ namespace Planillas
 			}
 		}
 		
-		public System.Data.Linq.Table<EMPLEADO> EMPLEADO
+		public System.Data.Linq.Table<V_TRASLADOS> V_TRASLADOS
 		{
 			get
 			{
-				return this.GetTable<EMPLEADO>();
+				return this.GetTable<V_TRASLADOS>();
 			}
 		}
 		
@@ -148,6 +167,34 @@ namespace Planillas
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_MTTO_TIPO_EMPLEADO")]
 		public int SP_MTTO_TIPO_EMPLEADO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_TIPO_EMPLEADO", DbType="Int")] System.Nullable<int> cODIGO_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOMBRE_TIPO_EMPLEADO", DbType="VarChar(30)")] string nOMBRE_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SUELDO", DbType="Decimal(12,2)")] System.Nullable<decimal> sUELDO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_MODIFICADOR", DbType="Int")] System.Nullable<int> tIPO_MODIFICADOR)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_TIPO_EMPLEADO, nOMBRE_TIPO_EMPLEADO, sUELDO, tIPO_MODIFICADOR);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_MTTO_USUARIO")]
+		public int SP_MTTO_USUARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_USUARIO", DbType="Int")] System.Nullable<int> cODIGO_USUARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOMBRE", DbType="VarChar(10)")] string nOMBRE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CONTRASENA", DbType="VarChar(8)")] string cONTRASENA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_MODIFICADOR", DbType="Int")] System.Nullable<int> tIPO_MODIFICADOR)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_USUARIO, nOMBRE, cONTRASENA, tIPO_MODIFICADOR);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_DATA_USUARIO")]
+		public ISingleResult<SP_DATA_USUARIOResult> SP_DATA_USUARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_USUARIO", DbType="Int")] System.Nullable<int> cODIGO_USUARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOMBRE", DbType="VarChar(10)")] string nOMBRE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CONTRASENA", DbType="VarChar(8)")] string cONTRASENA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_CONSULTA", DbType="Int")] System.Nullable<int> tIPO_CONSULTA)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_USUARIO, nOMBRE, cONTRASENA, tIPO_CONSULTA);
+			return ((ISingleResult<SP_DATA_USUARIOResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_MTTO_TRASLADOS")]
+		public int SP_MTTO_TRASLADOS([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_TRASLADOS", DbType="Int")] System.Nullable<int> cODIGO_TRASLADOS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_EMPLEADO", DbType="Int")] System.Nullable<int> cODIGO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_AREA_DESTINO", DbType="Int")] System.Nullable<int> cODIGO_AREA_DESTINO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_TIPO_EMPLEADO_ACTUAL", DbType="Int")] System.Nullable<int> cODIGO_TIPO_EMPLEADO_ACTUAL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FECHA_TRASLADO", DbType="Date")] System.Nullable<System.DateTime> fECHA_TRASLADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ESTADO_TRASLADO", DbType="VarChar(2)")] string eSTADO_TRASLADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USUARIO_CREA", DbType="VarChar(30)")] string uSUARIO_CREA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USUARIO_ACTUALIZA", DbType="VarChar(30)")] string uSUARIO_ACTUALIZA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_MODIFICADOR", DbType="Int")] System.Nullable<int> tIPO_MODIFICADOR)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_TRASLADOS, cODIGO_EMPLEADO, cODIGO_AREA_DESTINO, cODIGO_TIPO_EMPLEADO_ACTUAL, fECHA_TRASLADO, eSTADO_TRASLADO, uSUARIO_CREA, uSUARIO_ACTUALIZA, tIPO_MODIFICADOR);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_MTTO_TIPO_EMPLEADO")]
+		public int SP_MTTO_TIPO_EMPLEADO1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CODIGO_TIPO_EMPLEADO", DbType="Int")] System.Nullable<int> cODIGO_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOMBRE_TIPO_EMPLEADO", DbType="VarChar(30)")] string nOMBRE_TIPO_EMPLEADO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SUELDO", DbType="Decimal(12,2)")] System.Nullable<decimal> sUELDO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TIPO_MODIFICADOR", DbType="Int")] System.Nullable<int> tIPO_MODIFICADOR)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cODIGO_TIPO_EMPLEADO, nOMBRE_TIPO_EMPLEADO, sUELDO, tIPO_MODIFICADOR);
 			return ((int)(result.ReturnValue));
@@ -913,456 +960,6 @@ namespace Planillas
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AREA")]
-	public partial class AREA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CODIGO_AREA;
-		
-		private string _NOMBRE_AREA;
-		
-		private EntitySet<TRASLADO> _TRASLADO;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCODIGO_AREAChanging(int value);
-    partial void OnCODIGO_AREAChanged();
-    partial void OnNOMBRE_AREAChanging(string value);
-    partial void OnNOMBRE_AREAChanged();
-    #endregion
-		
-		public AREA()
-		{
-			this._TRASLADO = new EntitySet<TRASLADO>(new Action<TRASLADO>(this.attach_TRASLADO), new Action<TRASLADO>(this.detach_TRASLADO));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CODIGO_AREA
-		{
-			get
-			{
-				return this._CODIGO_AREA;
-			}
-			set
-			{
-				if ((this._CODIGO_AREA != value))
-				{
-					this.OnCODIGO_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._CODIGO_AREA = value;
-					this.SendPropertyChanged("CODIGO_AREA");
-					this.OnCODIGO_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_AREA", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NOMBRE_AREA
-		{
-			get
-			{
-				return this._NOMBRE_AREA;
-			}
-			set
-			{
-				if ((this._NOMBRE_AREA != value))
-				{
-					this.OnNOMBRE_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._NOMBRE_AREA = value;
-					this.SendPropertyChanged("NOMBRE_AREA");
-					this.OnNOMBRE_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AREA_TRASLADO", Storage="_TRASLADO", ThisKey="CODIGO_AREA", OtherKey="CODIGO_AREA")]
-		public EntitySet<TRASLADO> TRASLADO
-		{
-			get
-			{
-				return this._TRASLADO;
-			}
-			set
-			{
-				this._TRASLADO.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TRASLADO(TRASLADO entity)
-		{
-			this.SendPropertyChanging();
-			entity.AREA = this;
-		}
-		
-		private void detach_TRASLADO(TRASLADO entity)
-		{
-			this.SendPropertyChanging();
-			entity.AREA = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TRASLADO")]
-	public partial class TRASLADO : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CODIGO_TRASLADOS;
-		
-		private int _CODIGO_EMPLEADO;
-		
-		private int _CODIGO_AREA;
-		
-		private string _ESTADO_TRASLADO;
-		
-		private System.DateTime _FECHA_TRASLADO;
-		
-		private System.DateTime _USUARIO_CREA;
-		
-		private System.DateTime _FECHA_CREA;
-		
-		private string _USUARIO_ACTUALIZA;
-		
-		private System.DateTime _FECHA_ACTUALIZA;
-		
-		private EntityRef<AREA> _AREA;
-		
-		private EntityRef<EMPLEADO> _EMPLEADO;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCODIGO_TRASLADOSChanging(int value);
-    partial void OnCODIGO_TRASLADOSChanged();
-    partial void OnCODIGO_EMPLEADOChanging(int value);
-    partial void OnCODIGO_EMPLEADOChanged();
-    partial void OnCODIGO_AREAChanging(int value);
-    partial void OnCODIGO_AREAChanged();
-    partial void OnESTADO_TRASLADOChanging(string value);
-    partial void OnESTADO_TRASLADOChanged();
-    partial void OnFECHA_TRASLADOChanging(System.DateTime value);
-    partial void OnFECHA_TRASLADOChanged();
-    partial void OnUSUARIO_CREAChanging(System.DateTime value);
-    partial void OnUSUARIO_CREAChanged();
-    partial void OnFECHA_CREAChanging(System.DateTime value);
-    partial void OnFECHA_CREAChanged();
-    partial void OnUSUARIO_ACTUALIZAChanging(string value);
-    partial void OnUSUARIO_ACTUALIZAChanged();
-    partial void OnFECHA_ACTUALIZAChanging(System.DateTime value);
-    partial void OnFECHA_ACTUALIZAChanged();
-    #endregion
-		
-		public TRASLADO()
-		{
-			this._AREA = default(EntityRef<AREA>);
-			this._EMPLEADO = default(EntityRef<EMPLEADO>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TRASLADOS", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CODIGO_TRASLADOS
-		{
-			get
-			{
-				return this._CODIGO_TRASLADOS;
-			}
-			set
-			{
-				if ((this._CODIGO_TRASLADOS != value))
-				{
-					if (this._EMPLEADO.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCODIGO_TRASLADOSChanging(value);
-					this.SendPropertyChanging();
-					this._CODIGO_TRASLADOS = value;
-					this.SendPropertyChanged("CODIGO_TRASLADOS");
-					this.OnCODIGO_TRASLADOSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_EMPLEADO", DbType="Int NOT NULL")]
-		public int CODIGO_EMPLEADO
-		{
-			get
-			{
-				return this._CODIGO_EMPLEADO;
-			}
-			set
-			{
-				if ((this._CODIGO_EMPLEADO != value))
-				{
-					this.OnCODIGO_EMPLEADOChanging(value);
-					this.SendPropertyChanging();
-					this._CODIGO_EMPLEADO = value;
-					this.SendPropertyChanged("CODIGO_EMPLEADO");
-					this.OnCODIGO_EMPLEADOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA", DbType="Int NOT NULL")]
-		public int CODIGO_AREA
-		{
-			get
-			{
-				return this._CODIGO_AREA;
-			}
-			set
-			{
-				if ((this._CODIGO_AREA != value))
-				{
-					if (this._AREA.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCODIGO_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._CODIGO_AREA = value;
-					this.SendPropertyChanged("CODIGO_AREA");
-					this.OnCODIGO_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ESTADO_TRASLADO", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
-		public string ESTADO_TRASLADO
-		{
-			get
-			{
-				return this._ESTADO_TRASLADO;
-			}
-			set
-			{
-				if ((this._ESTADO_TRASLADO != value))
-				{
-					this.OnESTADO_TRASLADOChanging(value);
-					this.SendPropertyChanging();
-					this._ESTADO_TRASLADO = value;
-					this.SendPropertyChanged("ESTADO_TRASLADO");
-					this.OnESTADO_TRASLADOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_TRASLADO", DbType="DateTime NOT NULL")]
-		public System.DateTime FECHA_TRASLADO
-		{
-			get
-			{
-				return this._FECHA_TRASLADO;
-			}
-			set
-			{
-				if ((this._FECHA_TRASLADO != value))
-				{
-					this.OnFECHA_TRASLADOChanging(value);
-					this.SendPropertyChanging();
-					this._FECHA_TRASLADO = value;
-					this.SendPropertyChanged("FECHA_TRASLADO");
-					this.OnFECHA_TRASLADOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_CREA", DbType="DateTime NOT NULL")]
-		public System.DateTime USUARIO_CREA
-		{
-			get
-			{
-				return this._USUARIO_CREA;
-			}
-			set
-			{
-				if ((this._USUARIO_CREA != value))
-				{
-					this.OnUSUARIO_CREAChanging(value);
-					this.SendPropertyChanging();
-					this._USUARIO_CREA = value;
-					this.SendPropertyChanged("USUARIO_CREA");
-					this.OnUSUARIO_CREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_CREA", DbType="DateTime NOT NULL")]
-		public System.DateTime FECHA_CREA
-		{
-			get
-			{
-				return this._FECHA_CREA;
-			}
-			set
-			{
-				if ((this._FECHA_CREA != value))
-				{
-					this.OnFECHA_CREAChanging(value);
-					this.SendPropertyChanging();
-					this._FECHA_CREA = value;
-					this.SendPropertyChanged("FECHA_CREA");
-					this.OnFECHA_CREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_ACTUALIZA", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string USUARIO_ACTUALIZA
-		{
-			get
-			{
-				return this._USUARIO_ACTUALIZA;
-			}
-			set
-			{
-				if ((this._USUARIO_ACTUALIZA != value))
-				{
-					this.OnUSUARIO_ACTUALIZAChanging(value);
-					this.SendPropertyChanging();
-					this._USUARIO_ACTUALIZA = value;
-					this.SendPropertyChanged("USUARIO_ACTUALIZA");
-					this.OnUSUARIO_ACTUALIZAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_ACTUALIZA", DbType="DateTime NOT NULL")]
-		public System.DateTime FECHA_ACTUALIZA
-		{
-			get
-			{
-				return this._FECHA_ACTUALIZA;
-			}
-			set
-			{
-				if ((this._FECHA_ACTUALIZA != value))
-				{
-					this.OnFECHA_ACTUALIZAChanging(value);
-					this.SendPropertyChanging();
-					this._FECHA_ACTUALIZA = value;
-					this.SendPropertyChanged("FECHA_ACTUALIZA");
-					this.OnFECHA_ACTUALIZAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AREA_TRASLADO", Storage="_AREA", ThisKey="CODIGO_AREA", OtherKey="CODIGO_AREA", IsForeignKey=true)]
-		public AREA AREA
-		{
-			get
-			{
-				return this._AREA.Entity;
-			}
-			set
-			{
-				AREA previousValue = this._AREA.Entity;
-				if (((previousValue != value) 
-							|| (this._AREA.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._AREA.Entity = null;
-						previousValue.TRASLADO.Remove(this);
-					}
-					this._AREA.Entity = value;
-					if ((value != null))
-					{
-						value.TRASLADO.Add(this);
-						this._CODIGO_AREA = value.CODIGO_AREA;
-					}
-					else
-					{
-						this._CODIGO_AREA = default(int);
-					}
-					this.SendPropertyChanged("AREA");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EMPLEADO_TRASLADO", Storage="_EMPLEADO", ThisKey="CODIGO_TRASLADOS", OtherKey="CODIGO_EMPLEADO", IsForeignKey=true)]
-		public EMPLEADO EMPLEADO
-		{
-			get
-			{
-				return this._EMPLEADO.Entity;
-			}
-			set
-			{
-				EMPLEADO previousValue = this._EMPLEADO.Entity;
-				if (((previousValue != value) 
-							|| (this._EMPLEADO.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EMPLEADO.Entity = null;
-						previousValue.TRASLADO = null;
-					}
-					this._EMPLEADO.Entity = value;
-					if ((value != null))
-					{
-						value.TRASLADO = this;
-						this._CODIGO_TRASLADOS = value.CODIGO_EMPLEADO;
-					}
-					else
-					{
-						this._CODIGO_TRASLADOS = default(int);
-					}
-					this.SendPropertyChanged("EMPLEADO");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EMPLEADO")]
 	public partial class EMPLEADO : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1424,8 +1021,6 @@ namespace Planillas
 		private System.Nullable<System.DateTime> _FECHA_ACTUALIZA;
 		
 		private bool _ACTIVO;
-		
-		private EntityRef<TRASLADO> _TRASLADO;
 		
 		private EntityRef<DEPARTAMENTO> _DEPARTAMENTO1;
 		
@@ -1499,7 +1094,6 @@ namespace Planillas
 		
 		public EMPLEADO()
 		{
-			this._TRASLADO = default(EntityRef<TRASLADO>);
 			this._DEPARTAMENTO1 = default(EntityRef<DEPARTAMENTO>);
 			this._MUNICIPIO1 = default(EntityRef<MUNICIPIO>);
 			this._PAIS1 = default(EntityRef<PAIS>);
@@ -2083,35 +1677,6 @@ namespace Planillas
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EMPLEADO_TRASLADO", Storage="_TRASLADO", ThisKey="CODIGO_EMPLEADO", OtherKey="CODIGO_TRASLADOS", IsUnique=true, IsForeignKey=false)]
-		public TRASLADO TRASLADO
-		{
-			get
-			{
-				return this._TRASLADO.Entity;
-			}
-			set
-			{
-				TRASLADO previousValue = this._TRASLADO.Entity;
-				if (((previousValue != value) 
-							|| (this._TRASLADO.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TRASLADO.Entity = null;
-						previousValue.EMPLEADO = null;
-					}
-					this._TRASLADO.Entity = value;
-					if ((value != null))
-					{
-						value.EMPLEADO = this;
-					}
-					this.SendPropertyChanged("TRASLADO");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DEPARTAMENTO_EMPLEADO", Storage="_DEPARTAMENTO1", ThisKey="DEPARTAMENTO", OtherKey="CODIGO_DEPARTAMENTO", IsForeignKey=true)]
 		public DEPARTAMENTO DEPARTAMENTO1
 		{
@@ -2265,6 +1830,965 @@ namespace Planillas
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.USUARIO")]
+	public partial class USUARIO : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CODIGO_USUARIO;
+		
+		private string _NOMBRE;
+		
+		private string _CONTRASENA;
+		
+		private System.DateTime _FECHA;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCODIGO_USUARIOChanging(int value);
+    partial void OnCODIGO_USUARIOChanged();
+    partial void OnNOMBREChanging(string value);
+    partial void OnNOMBREChanged();
+    partial void OnCONTRASENAChanging(string value);
+    partial void OnCONTRASENAChanged();
+    partial void OnFECHAChanging(System.DateTime value);
+    partial void OnFECHAChanged();
+    #endregion
+		
+		public USUARIO()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_USUARIO", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CODIGO_USUARIO
+		{
+			get
+			{
+				return this._CODIGO_USUARIO;
+			}
+			set
+			{
+				if ((this._CODIGO_USUARIO != value))
+				{
+					this.OnCODIGO_USUARIOChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_USUARIO = value;
+					this.SendPropertyChanged("CODIGO_USUARIO");
+					this.OnCODIGO_USUARIOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string NOMBRE
+		{
+			get
+			{
+				return this._NOMBRE;
+			}
+			set
+			{
+				if ((this._NOMBRE != value))
+				{
+					this.OnNOMBREChanging(value);
+					this.SendPropertyChanging();
+					this._NOMBRE = value;
+					this.SendPropertyChanged("NOMBRE");
+					this.OnNOMBREChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONTRASENA", DbType="varchar(10) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string CONTRASENA
+		{
+			get
+			{
+				return this._CONTRASENA;
+			}
+			set
+			{
+				if ((this._CONTRASENA != value))
+				{
+					this.OnCONTRASENAChanging(value);
+					this.SendPropertyChanging();
+					this._CONTRASENA = value;
+					this.SendPropertyChanged("CONTRASENA");
+					this.OnCONTRASENAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA", DbType="Date NOT NULL")]
+		public System.DateTime FECHA
+		{
+			get
+			{
+				return this._FECHA;
+			}
+			set
+			{
+				if ((this._FECHA != value))
+				{
+					this.OnFECHAChanging(value);
+					this.SendPropertyChanging();
+					this._FECHA = value;
+					this.SendPropertyChanged("FECHA");
+					this.OnFECHAChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AREA")]
+	public partial class AREA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CODIGO_AREA;
+		
+		private string _NOMBRE_AREA;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCODIGO_AREAChanging(int value);
+    partial void OnCODIGO_AREAChanged();
+    partial void OnNOMBRE_AREAChanging(string value);
+    partial void OnNOMBRE_AREAChanged();
+    #endregion
+		
+		public AREA()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CODIGO_AREA
+		{
+			get
+			{
+				return this._CODIGO_AREA;
+			}
+			set
+			{
+				if ((this._CODIGO_AREA != value))
+				{
+					this.OnCODIGO_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_AREA = value;
+					this.SendPropertyChanged("CODIGO_AREA");
+					this.OnCODIGO_AREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_AREA", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NOMBRE_AREA
+		{
+			get
+			{
+				return this._NOMBRE_AREA;
+			}
+			set
+			{
+				if ((this._NOMBRE_AREA != value))
+				{
+					this.OnNOMBRE_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._NOMBRE_AREA = value;
+					this.SendPropertyChanged("NOMBRE_AREA");
+					this.OnNOMBRE_AREAChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TRASLADO")]
+	public partial class TRASLADO : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CODIGO_TRASLADOS;
+		
+		private int _CODIGO_EMPLEADO;
+		
+		private int _CODIGO_AREA_ORIGEN;
+		
+		private int _CODIGO_AREA_DESTINO;
+		
+		private int _CODIGO_TIPO_EMPLEADO_ANTERIOR;
+		
+		private int _CODIGO_TIPO_EMPLEADO_ACTUAL;
+		
+		private string _ESTADO_TRASLADO;
+		
+		private System.DateTime _FECHA_TRASLADO;
+		
+		private System.DateTime _USUARIO_CREA;
+		
+		private System.DateTime _FECHA_CREA;
+		
+		private string _USUARIO_ACTUALIZA;
+		
+		private System.DateTime _FECHA_ACTUALIZA;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCODIGO_TRASLADOSChanging(int value);
+    partial void OnCODIGO_TRASLADOSChanged();
+    partial void OnCODIGO_EMPLEADOChanging(int value);
+    partial void OnCODIGO_EMPLEADOChanged();
+    partial void OnCODIGO_AREA_ORIGENChanging(int value);
+    partial void OnCODIGO_AREA_ORIGENChanged();
+    partial void OnCODIGO_AREA_DESTINOChanging(int value);
+    partial void OnCODIGO_AREA_DESTINOChanged();
+    partial void OnCODIGO_TIPO_EMPLEADO_ANTERIORChanging(int value);
+    partial void OnCODIGO_TIPO_EMPLEADO_ANTERIORChanged();
+    partial void OnCODIGO_TIPO_EMPLEADO_ACTUALChanging(int value);
+    partial void OnCODIGO_TIPO_EMPLEADO_ACTUALChanged();
+    partial void OnESTADO_TRASLADOChanging(string value);
+    partial void OnESTADO_TRASLADOChanged();
+    partial void OnFECHA_TRASLADOChanging(System.DateTime value);
+    partial void OnFECHA_TRASLADOChanged();
+    partial void OnUSUARIO_CREAChanging(System.DateTime value);
+    partial void OnUSUARIO_CREAChanged();
+    partial void OnFECHA_CREAChanging(System.DateTime value);
+    partial void OnFECHA_CREAChanged();
+    partial void OnUSUARIO_ACTUALIZAChanging(string value);
+    partial void OnUSUARIO_ACTUALIZAChanged();
+    partial void OnFECHA_ACTUALIZAChanging(System.DateTime value);
+    partial void OnFECHA_ACTUALIZAChanged();
+    #endregion
+		
+		public TRASLADO()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TRASLADOS", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CODIGO_TRASLADOS
+		{
+			get
+			{
+				return this._CODIGO_TRASLADOS;
+			}
+			set
+			{
+				if ((this._CODIGO_TRASLADOS != value))
+				{
+					this.OnCODIGO_TRASLADOSChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_TRASLADOS = value;
+					this.SendPropertyChanged("CODIGO_TRASLADOS");
+					this.OnCODIGO_TRASLADOSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_EMPLEADO", DbType="Int NOT NULL")]
+		public int CODIGO_EMPLEADO
+		{
+			get
+			{
+				return this._CODIGO_EMPLEADO;
+			}
+			set
+			{
+				if ((this._CODIGO_EMPLEADO != value))
+				{
+					this.OnCODIGO_EMPLEADOChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_EMPLEADO = value;
+					this.SendPropertyChanged("CODIGO_EMPLEADO");
+					this.OnCODIGO_EMPLEADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA_ORIGEN", DbType="Int NOT NULL")]
+		public int CODIGO_AREA_ORIGEN
+		{
+			get
+			{
+				return this._CODIGO_AREA_ORIGEN;
+			}
+			set
+			{
+				if ((this._CODIGO_AREA_ORIGEN != value))
+				{
+					this.OnCODIGO_AREA_ORIGENChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_AREA_ORIGEN = value;
+					this.SendPropertyChanged("CODIGO_AREA_ORIGEN");
+					this.OnCODIGO_AREA_ORIGENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA_DESTINO", DbType="Int NOT NULL")]
+		public int CODIGO_AREA_DESTINO
+		{
+			get
+			{
+				return this._CODIGO_AREA_DESTINO;
+			}
+			set
+			{
+				if ((this._CODIGO_AREA_DESTINO != value))
+				{
+					this.OnCODIGO_AREA_DESTINOChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_AREA_DESTINO = value;
+					this.SendPropertyChanged("CODIGO_AREA_DESTINO");
+					this.OnCODIGO_AREA_DESTINOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TIPO_EMPLEADO_ANTERIOR", DbType="Int NOT NULL")]
+		public int CODIGO_TIPO_EMPLEADO_ANTERIOR
+		{
+			get
+			{
+				return this._CODIGO_TIPO_EMPLEADO_ANTERIOR;
+			}
+			set
+			{
+				if ((this._CODIGO_TIPO_EMPLEADO_ANTERIOR != value))
+				{
+					this.OnCODIGO_TIPO_EMPLEADO_ANTERIORChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_TIPO_EMPLEADO_ANTERIOR = value;
+					this.SendPropertyChanged("CODIGO_TIPO_EMPLEADO_ANTERIOR");
+					this.OnCODIGO_TIPO_EMPLEADO_ANTERIORChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TIPO_EMPLEADO_ACTUAL", DbType="Int NOT NULL")]
+		public int CODIGO_TIPO_EMPLEADO_ACTUAL
+		{
+			get
+			{
+				return this._CODIGO_TIPO_EMPLEADO_ACTUAL;
+			}
+			set
+			{
+				if ((this._CODIGO_TIPO_EMPLEADO_ACTUAL != value))
+				{
+					this.OnCODIGO_TIPO_EMPLEADO_ACTUALChanging(value);
+					this.SendPropertyChanging();
+					this._CODIGO_TIPO_EMPLEADO_ACTUAL = value;
+					this.SendPropertyChanged("CODIGO_TIPO_EMPLEADO_ACTUAL");
+					this.OnCODIGO_TIPO_EMPLEADO_ACTUALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ESTADO_TRASLADO", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string ESTADO_TRASLADO
+		{
+			get
+			{
+				return this._ESTADO_TRASLADO;
+			}
+			set
+			{
+				if ((this._ESTADO_TRASLADO != value))
+				{
+					this.OnESTADO_TRASLADOChanging(value);
+					this.SendPropertyChanging();
+					this._ESTADO_TRASLADO = value;
+					this.SendPropertyChanged("ESTADO_TRASLADO");
+					this.OnESTADO_TRASLADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_TRASLADO", DbType="DateTime NOT NULL")]
+		public System.DateTime FECHA_TRASLADO
+		{
+			get
+			{
+				return this._FECHA_TRASLADO;
+			}
+			set
+			{
+				if ((this._FECHA_TRASLADO != value))
+				{
+					this.OnFECHA_TRASLADOChanging(value);
+					this.SendPropertyChanging();
+					this._FECHA_TRASLADO = value;
+					this.SendPropertyChanged("FECHA_TRASLADO");
+					this.OnFECHA_TRASLADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_CREA", DbType="DateTime NOT NULL")]
+		public System.DateTime USUARIO_CREA
+		{
+			get
+			{
+				return this._USUARIO_CREA;
+			}
+			set
+			{
+				if ((this._USUARIO_CREA != value))
+				{
+					this.OnUSUARIO_CREAChanging(value);
+					this.SendPropertyChanging();
+					this._USUARIO_CREA = value;
+					this.SendPropertyChanged("USUARIO_CREA");
+					this.OnUSUARIO_CREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_CREA", DbType="DateTime NOT NULL")]
+		public System.DateTime FECHA_CREA
+		{
+			get
+			{
+				return this._FECHA_CREA;
+			}
+			set
+			{
+				if ((this._FECHA_CREA != value))
+				{
+					this.OnFECHA_CREAChanging(value);
+					this.SendPropertyChanging();
+					this._FECHA_CREA = value;
+					this.SendPropertyChanged("FECHA_CREA");
+					this.OnFECHA_CREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_ACTUALIZA", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string USUARIO_ACTUALIZA
+		{
+			get
+			{
+				return this._USUARIO_ACTUALIZA;
+			}
+			set
+			{
+				if ((this._USUARIO_ACTUALIZA != value))
+				{
+					this.OnUSUARIO_ACTUALIZAChanging(value);
+					this.SendPropertyChanging();
+					this._USUARIO_ACTUALIZA = value;
+					this.SendPropertyChanged("USUARIO_ACTUALIZA");
+					this.OnUSUARIO_ACTUALIZAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_ACTUALIZA", DbType="DateTime NOT NULL")]
+		public System.DateTime FECHA_ACTUALIZA
+		{
+			get
+			{
+				return this._FECHA_ACTUALIZA;
+			}
+			set
+			{
+				if ((this._FECHA_ACTUALIZA != value))
+				{
+					this.OnFECHA_ACTUALIZAChanging(value);
+					this.SendPropertyChanging();
+					this._FECHA_ACTUALIZA = value;
+					this.SendPropertyChanged("FECHA_ACTUALIZA");
+					this.OnFECHA_ACTUALIZAChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V_TRASLADOS")]
+	public partial class V_TRASLADOS
+	{
+		
+		private int _CODIGO_TRASLADOS;
+		
+		private int _CODIGO_EMPLEADO;
+		
+		private int _CODIGO_AREA_ORIGEN;
+		
+		private int _CODIGO_AREA_DESTINO;
+		
+		private int _CODIGO_TIPO_EMPLEADO_ANTERIOR;
+		
+		private int _CODIGO_TIPO_EMPLEADO_ACTUAL;
+		
+		private string _NOMBRE_EMPLEADO;
+		
+		private string _NOMBRE_AREA_ORIGEN;
+		
+		private string _NOMBRE_AREA_DESTINO;
+		
+		private string _NOMBRE_TIPO_EMPLEADO_ORIGEN;
+		
+		private decimal _SUELDO_ANTERIOR;
+		
+		private string _NOMBRE_TIPO_EMPLEADO_DESTINO;
+		
+		private decimal _SUELDO_ACTUAL;
+		
+		private string _ESTADO_TRASLADO;
+		
+		private System.DateTime _FECHA_TRASLADO;
+		
+		private string _USUARIO_CREA;
+		
+		private System.DateTime _FECHA_CREA;
+		
+		private string _USUARIO_ACTUALIZA;
+		
+		private System.Nullable<System.DateTime> _FECHA_ACTUALIZA;
+		
+		public V_TRASLADOS()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TRASLADOS", DbType="Int NOT NULL")]
+		public int CODIGO_TRASLADOS
+		{
+			get
+			{
+				return this._CODIGO_TRASLADOS;
+			}
+			set
+			{
+				if ((this._CODIGO_TRASLADOS != value))
+				{
+					this._CODIGO_TRASLADOS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_EMPLEADO", DbType="Int NOT NULL")]
+		public int CODIGO_EMPLEADO
+		{
+			get
+			{
+				return this._CODIGO_EMPLEADO;
+			}
+			set
+			{
+				if ((this._CODIGO_EMPLEADO != value))
+				{
+					this._CODIGO_EMPLEADO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA_ORIGEN", DbType="Int NOT NULL")]
+		public int CODIGO_AREA_ORIGEN
+		{
+			get
+			{
+				return this._CODIGO_AREA_ORIGEN;
+			}
+			set
+			{
+				if ((this._CODIGO_AREA_ORIGEN != value))
+				{
+					this._CODIGO_AREA_ORIGEN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_AREA_DESTINO", DbType="Int NOT NULL")]
+		public int CODIGO_AREA_DESTINO
+		{
+			get
+			{
+				return this._CODIGO_AREA_DESTINO;
+			}
+			set
+			{
+				if ((this._CODIGO_AREA_DESTINO != value))
+				{
+					this._CODIGO_AREA_DESTINO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TIPO_EMPLEADO_ANTERIOR", DbType="Int NOT NULL")]
+		public int CODIGO_TIPO_EMPLEADO_ANTERIOR
+		{
+			get
+			{
+				return this._CODIGO_TIPO_EMPLEADO_ANTERIOR;
+			}
+			set
+			{
+				if ((this._CODIGO_TIPO_EMPLEADO_ANTERIOR != value))
+				{
+					this._CODIGO_TIPO_EMPLEADO_ANTERIOR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_TIPO_EMPLEADO_ACTUAL", DbType="Int NOT NULL")]
+		public int CODIGO_TIPO_EMPLEADO_ACTUAL
+		{
+			get
+			{
+				return this._CODIGO_TIPO_EMPLEADO_ACTUAL;
+			}
+			set
+			{
+				if ((this._CODIGO_TIPO_EMPLEADO_ACTUAL != value))
+				{
+					this._CODIGO_TIPO_EMPLEADO_ACTUAL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_EMPLEADO", DbType="VarChar(112)")]
+		public string NOMBRE_EMPLEADO
+		{
+			get
+			{
+				return this._NOMBRE_EMPLEADO;
+			}
+			set
+			{
+				if ((this._NOMBRE_EMPLEADO != value))
+				{
+					this._NOMBRE_EMPLEADO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_AREA_ORIGEN", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NOMBRE_AREA_ORIGEN
+		{
+			get
+			{
+				return this._NOMBRE_AREA_ORIGEN;
+			}
+			set
+			{
+				if ((this._NOMBRE_AREA_ORIGEN != value))
+				{
+					this._NOMBRE_AREA_ORIGEN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_AREA_DESTINO", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NOMBRE_AREA_DESTINO
+		{
+			get
+			{
+				return this._NOMBRE_AREA_DESTINO;
+			}
+			set
+			{
+				if ((this._NOMBRE_AREA_DESTINO != value))
+				{
+					this._NOMBRE_AREA_DESTINO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_TIPO_EMPLEADO_ORIGEN", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string NOMBRE_TIPO_EMPLEADO_ORIGEN
+		{
+			get
+			{
+				return this._NOMBRE_TIPO_EMPLEADO_ORIGEN;
+			}
+			set
+			{
+				if ((this._NOMBRE_TIPO_EMPLEADO_ORIGEN != value))
+				{
+					this._NOMBRE_TIPO_EMPLEADO_ORIGEN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUELDO_ANTERIOR", DbType="Decimal(12,2) NOT NULL")]
+		public decimal SUELDO_ANTERIOR
+		{
+			get
+			{
+				return this._SUELDO_ANTERIOR;
+			}
+			set
+			{
+				if ((this._SUELDO_ANTERIOR != value))
+				{
+					this._SUELDO_ANTERIOR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_TIPO_EMPLEADO_DESTINO", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string NOMBRE_TIPO_EMPLEADO_DESTINO
+		{
+			get
+			{
+				return this._NOMBRE_TIPO_EMPLEADO_DESTINO;
+			}
+			set
+			{
+				if ((this._NOMBRE_TIPO_EMPLEADO_DESTINO != value))
+				{
+					this._NOMBRE_TIPO_EMPLEADO_DESTINO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUELDO_ACTUAL", DbType="Decimal(12,2) NOT NULL")]
+		public decimal SUELDO_ACTUAL
+		{
+			get
+			{
+				return this._SUELDO_ACTUAL;
+			}
+			set
+			{
+				if ((this._SUELDO_ACTUAL != value))
+				{
+					this._SUELDO_ACTUAL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ESTADO_TRASLADO", DbType="VarChar(10)")]
+		public string ESTADO_TRASLADO
+		{
+			get
+			{
+				return this._ESTADO_TRASLADO;
+			}
+			set
+			{
+				if ((this._ESTADO_TRASLADO != value))
+				{
+					this._ESTADO_TRASLADO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_TRASLADO", DbType="DateTime NOT NULL")]
+		public System.DateTime FECHA_TRASLADO
+		{
+			get
+			{
+				return this._FECHA_TRASLADO;
+			}
+			set
+			{
+				if ((this._FECHA_TRASLADO != value))
+				{
+					this._FECHA_TRASLADO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_CREA", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string USUARIO_CREA
+		{
+			get
+			{
+				return this._USUARIO_CREA;
+			}
+			set
+			{
+				if ((this._USUARIO_CREA != value))
+				{
+					this._USUARIO_CREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_CREA", DbType="DateTime NOT NULL")]
+		public System.DateTime FECHA_CREA
+		{
+			get
+			{
+				return this._FECHA_CREA;
+			}
+			set
+			{
+				if ((this._FECHA_CREA != value))
+				{
+					this._FECHA_CREA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USUARIO_ACTUALIZA", DbType="VarChar(30)")]
+		public string USUARIO_ACTUALIZA
+		{
+			get
+			{
+				return this._USUARIO_ACTUALIZA;
+			}
+			set
+			{
+				if ((this._USUARIO_ACTUALIZA != value))
+				{
+					this._USUARIO_ACTUALIZA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FECHA_ACTUALIZA", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FECHA_ACTUALIZA
+		{
+			get
+			{
+				return this._FECHA_ACTUALIZA;
+			}
+			set
+			{
+				if ((this._FECHA_ACTUALIZA != value))
+				{
+					this._FECHA_ACTUALIZA = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_DATA_USUARIOResult
+	{
+		
+		private int _CODIGO_USUARIO;
+		
+		private string _NOMBRE;
+		
+		private string _CONTRASENA;
+		
+		public SP_DATA_USUARIOResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_USUARIO", DbType="Int NOT NULL")]
+		public int CODIGO_USUARIO
+		{
+			get
+			{
+				return this._CODIGO_USUARIO;
+			}
+			set
+			{
+				if ((this._CODIGO_USUARIO != value))
+				{
+					this._CODIGO_USUARIO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string NOMBRE
+		{
+			get
+			{
+				return this._NOMBRE;
+			}
+			set
+			{
+				if ((this._NOMBRE != value))
+				{
+					this._NOMBRE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONTRASENA", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string CONTRASENA
+		{
+			get
+			{
+				return this._CONTRASENA;
+			}
+			set
+			{
+				if ((this._CONTRASENA != value))
+				{
+					this._CONTRASENA = value;
+				}
 			}
 		}
 	}

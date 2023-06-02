@@ -1,0 +1,53 @@
+﻿@model Planillas.V_TRASLADOS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h4>¿Estas seguro de eliminar este Traslado?</h4>
+<div>
+    <h4>Traslado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Código
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO_TRASLADOS)
+        </dd>
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_EMPLEADO)
+        </dd>
+        <dt>
+            Origen
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_AREA_ORIGEN)
+        </dd>
+        <dt>
+            Destino
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_AREA_DESTINO)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "TRASLADO", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <button type="button" class="btn btn-secondary">@Html.ActionLink("Regresar", "TRASLADO")</button>
+
+        </div>
+    }
+</div>

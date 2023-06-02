@@ -79,8 +79,8 @@ C:\Users\Compu\source\repos\Planillas\Planillas\bin\es\System.Web.Razor.resource
 C:\Users\Compu\source\repos\Planillas\Planillas\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Compu\source\repos\Planillas\Planillas\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Compu\source\repos\Planillas\Planillas\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.csproj.AssemblyReference.cache
 C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.csproj.CoreCompileInputs.cache
 C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.csproj.CopyComplete
 C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.dll
 C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.pdb
+C:\Users\Compu\source\repos\Planillas\Planillas\obj\Debug\Planillas.csproj.AssemblyReference.cache

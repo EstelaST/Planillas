@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PLANILLAS" Class="DBPlanillasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-RJND44F;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-QD61HMF;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.DEPARTAMENTO" Member="DEPARTAMENTO">
     <Type Name="DEPARTAMENTO">
       <Column Name="CODIGO_DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -38,28 +38,6 @@
       <Association Name="TIPO_EMPLEADO_EMPLEADO" Member="EMPLEADO" ThisKey="CODIGO_TIPO_EMPLEADO" OtherKey="TIPO_EMPLEADO" Type="EMPLEADO" />
     </Type>
   </Table>
-  <Table Name="dbo.AREA" Member="AREA">
-    <Type Name="AREA">
-      <Column Name="CODIGO_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="AREA_TRASLADO" Member="TRASLADO" ThisKey="CODIGO_AREA" OtherKey="CODIGO_AREA" Type="TRASLADO" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TRASLADO" Member="TRASLADO">
-    <Type Name="TRASLADO">
-      <Column Name="CODIGO_TRASLADOS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CODIGO_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ESTADO_TRASLADO" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="FECHA_TRASLADO" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="USUARIO_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="AREA_TRASLADO" Member="AREA" ThisKey="CODIGO_AREA" OtherKey="CODIGO_AREA" Type="AREA" IsForeignKey="true" />
-      <Association Name="EMPLEADO_TRASLADO" Member="EMPLEADO" ThisKey="CODIGO_TRASLADOS" OtherKey="CODIGO_EMPLEADO" Type="EMPLEADO" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EMPLEADO" Member="EMPLEADO">
     <Type Name="EMPLEADO">
       <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -90,11 +68,63 @@
       <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ACTIVO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="EMPLEADO_TRASLADO" Member="TRASLADO" ThisKey="CODIGO_EMPLEADO" OtherKey="CODIGO_TRASLADOS" Type="TRASLADO" Cardinality="One" />
       <Association Name="DEPARTAMENTO_EMPLEADO" Member="DEPARTAMENTO1" ThisKey="DEPARTAMENTO" OtherKey="CODIGO_DEPARTAMENTO" Type="DEPARTAMENTO" IsForeignKey="true" />
       <Association Name="MUNICIPIO_EMPLEADO" Member="MUNICIPIO1" ThisKey="MUNICIPIO" OtherKey="CODIGO_MUNICIPIO" Type="MUNICIPIO" IsForeignKey="true" />
       <Association Name="PAIS_EMPLEADO" Member="PAIS1" ThisKey="PAIS" OtherKey="CODIGO_PAIS" Type="PAIS" IsForeignKey="true" />
       <Association Name="TIPO_EMPLEADO_EMPLEADO" Member="TIPO_EMPLEADO1" ThisKey="TIPO_EMPLEADO" OtherKey="CODIGO_TIPO_EMPLEADO" Type="TIPO_EMPLEADO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIO">
+    <Type Name="USUARIO">
+      <Column Name="CODIGO_USUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRASENA" Type="System.Data.Linq.Binary" DbType="VarBinary(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FECHA" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AREA" Member="AREA">
+    <Type Name="AREA">
+      <Column Name="CODIGO_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRASLADO" Member="TRASLADO">
+    <Type Name="TRASLADO">
+      <Column Name="CODIGO_TRASLADOS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_AREA_ORIGEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_AREA_DESTINO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_TIPO_EMPLEADO_ANTERIOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_TIPO_EMPLEADO_ACTUAL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO_TRASLADO" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_TRASLADO" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_TRASLADOS" Member="V_TRASLADOS">
+    <Type Name="V_TRASLADOS">
+      <Column Name="CODIGO_TRASLADOS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_AREA_ORIGEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_AREA_DESTINO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_TIPO_EMPLEADO_ANTERIOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_TIPO_EMPLEADO_ACTUAL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPLEADO" Type="System.String" DbType="VarChar(112)" CanBeNull="true" />
+      <Column Name="NOMBRE_AREA_ORIGEN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA_DESTINO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_EMPLEADO_ORIGEN" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SUELDO_ANTERIOR" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_EMPLEADO_DESTINO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SUELDO_ACTUAL" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO_TRASLADO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FECHA_TRASLADO" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_CREA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_MTTO_AREAS" Method="SP_MTTO_AREAS">
@@ -104,6 +134,43 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.SP_MTTO_TIPO_EMPLEADO" Method="SP_MTTO_TIPO_EMPLEADO">
+    <Parameter Name="CODIGO_TIPO_EMPLEADO" Parameter="cODIGO_TIPO_EMPLEADO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_TIPO_EMPLEADO" Parameter="nOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="SUELDO" Parameter="sUELDO" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MTTO_USUARIO" Method="SP_MTTO_USUARIO">
+    <Parameter Name="CODIGO_USUARIO" Parameter="cODIGO_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE" Parameter="nOMBRE" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONTRASENA" Parameter="cONTRASENA" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_DATA_USUARIO" Method="SP_DATA_USUARIO">
+    <Parameter Name="CODIGO_USUARIO" Parameter="cODIGO_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE" Parameter="nOMBRE" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONTRASENA" Parameter="cONTRASENA" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="TIPO_CONSULTA" Parameter="tIPO_CONSULTA" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_DATA_USUARIOResult">
+      <Column Name="CODIGO_USUARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRASENA" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_MTTO_TRASLADOS" Method="SP_MTTO_TRASLADOS">
+    <Parameter Name="CODIGO_TRASLADOS" Parameter="cODIGO_TRASLADOS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CODIGO_EMPLEADO" Parameter="cODIGO_EMPLEADO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CODIGO_AREA_DESTINO" Parameter="cODIGO_AREA_DESTINO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CODIGO_TIPO_EMPLEADO_ACTUAL" Parameter="cODIGO_TIPO_EMPLEADO_ACTUAL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FECHA_TRASLADO" Parameter="fECHA_TRASLADO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ESTADO_TRASLADO" Parameter="eSTADO_TRASLADO" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="USUARIO_CREA" Parameter="uSUARIO_CREA" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="USUARIO_ACTUALIZA" Parameter="uSUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MTTO_TIPO_EMPLEADO" Method="SP_MTTO_TIPO_EMPLEADO1">
     <Parameter Name="CODIGO_TIPO_EMPLEADO" Parameter="cODIGO_TIPO_EMPLEADO" Type="System.Int32" DbType="Int" />
     <Parameter Name="NOMBRE_TIPO_EMPLEADO" Parameter="nOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="SUELDO" Parameter="sUELDO" Type="System.Decimal" DbType="Decimal(12,2)" />
