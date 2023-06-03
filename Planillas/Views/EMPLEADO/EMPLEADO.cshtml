@@ -1,97 +1,82 @@
-﻿@model IEnumerable<Planillas.EMPLEADO>
+﻿@model IEnumerable<Planillas.V_EMPLEADOS>
 
 @{
     ViewBag.Title = "EMPLEADO";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EMPLEADO</h2>
+<h2>Empleados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-primary"> @Html.ActionLink("Nuevo", "Create")</button>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PRIMER_NOMBRE)
+            Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+            Fecha de Nacimiento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PRIMER_APELLIDO)
+            Sexo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+            País
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+            Departamento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SEXO)
+            Municipio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PAIS)
+            Dirección
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DEPARTAMENTO)
+            Estado Civil
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MUNICIPIO)
+            Teléfono
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DIRECCION)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ESTADO_CIVIL)
+            Lugar de Nacimiento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TELEFONO)
+            DUI
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CORREO_ELECTRONICO)
+            NIT
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LUGAR_NACIMIENTO)
+            AFP
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DUI)
+            SEGURO
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NIT)
+            NUP
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AFP)
+            Tipo Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SEGURO)
+            Fecha Ingreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NUP)
+            Fecha Retiro
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TIPO_EMPLEADO)
+            Usuario Crea.
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+            Estado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FECHA_RETIRO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USUARIO_CREA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHA_CREA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USUARIO_ACTUALIZA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHA_ACTUALIZA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVO)
+            Area
         </th>
         <th></th>
     </tr>
@@ -100,94 +85,80 @@
     {
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PRIMER_NOMBRE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SEGUNDO_NOMBRE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PRIMER_APELLIDO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SEGUNDO_APELLIDO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SEXO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PAIS)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DEPARTAMENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MUNICIPIO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DIRECCION)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ESTADO_CIVIL)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TELEFONO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CORREO_ELECTRONICO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LUGAR_NACIMIENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DUI)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NIT)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AFP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SEGURO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NUP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TIPO_EMPLEADO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_INGRESO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_RETIRO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.USUARIO_CREA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_CREA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.USUARIO_ACTUALIZA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_ACTUALIZA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ACTIVO)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CODIGO_EMPLEADO }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CODIGO_EMPLEADO }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CODIGO_EMPLEADO })
-                </td>
-            </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_EMPLEADO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_SEXO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_PAIS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_DEPARTAMENTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_MINICIPIO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DIRECCION)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_ESTADO_CIVIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TELEFONO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CORREO_ELECTRONICO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LUGAR_NACIMIENTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DUI)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NIT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_AFP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SEGURO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NUP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_TIPO_EMPLEADO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FECHA_INGRESO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FECHA_RETIRO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.USUARIO_CREA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ACTIVO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_AREA)
+    </td>
+    <td>
+
+        <button type="button" class="btn btn-success">@Html.ActionLink("Modificar", "Edit", new { id = item.CODIGO_EMPLEADO })</button>
+        <button type="button" class="btn btn-secondary">@Html.ActionLink("Detalles", "Details", new { id = item.CODIGO_EMPLEADO })</button>
+        <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.CODIGO_EMPLEADO })</button>
+    </td>
+</tr>
         }
     }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PLANILLAS" Class="DBPlanillasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-QD61HMF;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-RJND44F;Initial Catalog=PLANILLAS;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PLANILLASConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.DEPARTAMENTO" Member="DEPARTAMENTO">
     <Type Name="DEPARTAMENTO">
       <Column Name="CODIGO_DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -68,6 +68,7 @@
       <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ACTIVO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AREA" Type="System.Int32" DbType="Int NULL" CanBeNull="false" />
       <Association Name="DEPARTAMENTO_EMPLEADO" Member="DEPARTAMENTO1" ThisKey="DEPARTAMENTO" OtherKey="CODIGO_DEPARTAMENTO" Type="DEPARTAMENTO" IsForeignKey="true" />
       <Association Name="MUNICIPIO_EMPLEADO" Member="MUNICIPIO1" ThisKey="MUNICIPIO" OtherKey="CODIGO_MUNICIPIO" Type="MUNICIPIO" IsForeignKey="true" />
       <Association Name="PAIS_EMPLEADO" Member="PAIS1" ThisKey="PAIS" OtherKey="CODIGO_PAIS" Type="PAIS" IsForeignKey="true" />
@@ -78,7 +79,7 @@
     <Type Name="USUARIO">
       <Column Name="CODIGO_USUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NOMBRE" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="CONTRASENA" Type="System.Data.Linq.Binary" DbType="VarBinary(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CONTRASENA" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="FECHA" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
@@ -125,6 +126,48 @@
       <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_EMPLEADOS" Member="V_EMPLEADOS">
+    <Type Name="V_EMPLEADOS">
+      <Column Name="CODIGO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRIMER_NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SEGUNDO_NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIMER_APELLIDO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SEGUNDO_APELLIDO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPLEADO" Type="System.String" DbType="VarChar(203) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="SEXO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_SEXO" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="PAIS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_PAIS" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DEPARTAMENTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_DEPARTAMENTO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="MUNICIPIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_MINICIPIO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="DIRECCION" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ESTADO_CIVIL" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_ESTADO_CIVIL" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TELEFONO" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CORREO_ELECTRONICO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LUGAR_NACIMIENTO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DUI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NIT" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AFP" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_AFP" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="SEGURO" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NUP" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TIPO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_INGRESO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_RETIRO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_CREA" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_CREA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FECHA_ACTUALIZA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ACTIVO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AREA" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_MTTO_AREAS" Method="SP_MTTO_AREAS">
@@ -174,6 +217,37 @@
     <Parameter Name="CODIGO_TIPO_EMPLEADO" Parameter="cODIGO_TIPO_EMPLEADO" Type="System.Int32" DbType="Int" />
     <Parameter Name="NOMBRE_TIPO_EMPLEADO" Parameter="nOMBRE_TIPO_EMPLEADO" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="SUELDO" Parameter="sUELDO" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_MTTO_EMPLEADO" Method="SP_MTTO_EMPLEADO">
+    <Parameter Name="CODIGO_EMPLEADO" Parameter="cODIGO_EMPLEADO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PRIMER_NOMBRE" Parameter="pRIMER_NOMBRE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SEGUNDO_NOMBRE" Parameter="sEGUNDO_NOMBRE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PRIMER_APELLIDO" Parameter="pRIMER_APELLIDO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SEGUNDO_APELLIDO" Parameter="sEGUNDO_APELLIDO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FECHA_NACIMIENTO" Parameter="fECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="SEXO" Parameter="sEXO" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="PAIS" Parameter="pAIS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DEPARTAMENTO" Parameter="dEPARTAMENTO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MUNICIPIO" Parameter="mUNICIPIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DIRECCION" Parameter="dIRECCION" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="ESTADO_CIVIL" Parameter="eSTADO_CIVIL" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="TELEFONO" Parameter="tELEFONO" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="CORREO_ELECTRONICO" Parameter="cORREO_ELECTRONICO" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="LUGAR_NACIMIENTO" Parameter="lUGAR_NACIMIENTO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DUI" Parameter="dUI" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="NIT" Parameter="nIT" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AFP" Parameter="aFP" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="SEGURO" Parameter="sEGURO" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="NUP" Parameter="nUP" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TIPO_EMPLEADO" Parameter="tIPO_EMPLEADO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FECHA_INGRESO" Parameter="fECHA_INGRESO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="FECHA_RETIRO" Parameter="fECHA_RETIRO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="USUARIO_CREA" Parameter="uSUARIO_CREA" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="USUARIO_ACTUALIZA" Parameter="uSUARIO_ACTUALIZA" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="ACTIVO" Parameter="aCTIVO" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="AREA" Parameter="aREA" Type="System.Int32" DbType="Int" />
     <Parameter Name="TIPO_MODIFICADOR" Parameter="tIPO_MODIFICADOR" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
